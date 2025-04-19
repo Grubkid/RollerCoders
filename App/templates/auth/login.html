@@ -1,0 +1,24 @@
+{% extends '/layout.html' %}
+
+{% block content %}
+<div class="form-container">
+    <form method="POST" action="/login" id="login-form">
+        <h2>Login</h2>
+        <label>Username:</label>
+        <input type="text" name="username" required placeholder="Enter your username" class="validate">
+        <label>Password:</label>
+        <input type="password" name="password" required class="validate" placeholder="Enter your password">
+        <button type="submit">Login</button>
+        <p>Don't have an account? <a href="/signup">Sign up here</a>.</p>
+    </form>
+    {% with messages = get_flashed_messages() %}
+    {% if messages %}
+    <ul>
+        {% for msg in messages %}
+        <li>{{ msg }}</li>
+        {% endfor %}
+    </ul>
+    {% endif %}
+    {% endwith %}
+</div>
+{% endblock %}
