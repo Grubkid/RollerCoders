@@ -1,13 +1,29 @@
 {% extends "layout.html" %}
-{% block title %}Flask MVC App{% endblock %}
-{% block page %}Flask MVC App{% endblock %}
-
-{{ super() }}
+{% block title %}BigBackCooks - Your Kitchen Companion{% endblock %}
+{% block page %}BigBackCooks{% endblock %}
 
 {% block content %}
-    <h1>Flask MVC</h1>
-    {% if is_authenticated %}
-        <p> Welcome {{current_user.username}} </p>
-    {% endif %}
-    <p>This is a boileplate flask application which follows the MVC pattern for structuring the project.</p>
+
+    <h2 class="hero-subtitle">Your intelligent kitchen companion for tracking ingredients, discovering recipes, and reducing food waste</h2>
+
+    <div style="height: 350px;"></div>
+<div class="features">
+    <div class="feature-card">
+        <div class="feature-icon" style="text-align: center;">📦</div>
+        <h3 class="feature-title" style="text-align: center;">Smart Inventory</h3>
+        <p class="feature-desc">Track your pantry items with expiry alerts and automatic quantity updates when you cook.</p>
+    </div>
+    
+    <div class="feature-card">
+        <div class="feature-icon "style="text-align: center;">🔍</div>
+        <h3 class="feature-title" style="text-align: center;">Recipe Discovery</h3>
+        <p class="feature-desc">Find perfect recipes based on what you already have, reducing trips to the grocery store.</p>
+    </div>
+    
+    <div class="feature-card">
+        <div class="feature-icon" style="text-align: center;">♻️</div>
+        <h3 class="feature-title" style="text-align: center;">Waste Reduction</h3>
+        <p class="feature-desc">Get alerts for expiring ingredients and suggestions to use them before they go bad.</p>
+    </div>
+</div>
 {% endblock %}

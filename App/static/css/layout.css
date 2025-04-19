@@ -1,0 +1,383 @@
+/* Base Styles */
+body {
+    margin: 0;
+    padding: 0;
+    font-family: 'Inter', sans-serif;
+    background: url("../images/freepik__retouch__60285.png") no-repeat center center fixed;
+    background-size: cover;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    color: #190400;
+    /* <<< FIXED: Use solid readable text color */
+}
+
+/* Navigation */
+nav {
+    background-color: #796d4c;
+    padding: 0.8rem 2rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
+    position: relative;
+    opacity: 0.9;
+    backdrop-filter: blur(5px);
+    z-index: 1000;
+}
+
+.nav-title {
+    font-size: 1.8rem;
+    font-weight: 700;
+    color: #190400;
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+}
+
+.nav-links {
+    display: flex;
+    gap: 1.5rem;
+    margin-left: auto;
+}
+
+.nav-links a {
+    text-decoration: none;
+    color: #190400;
+    font-weight: 500;
+    padding: 0.5rem 0;
+    position: relative;
+    font-size: 1rem;
+    transition: color 0.2s ease;
+}
+
+.nav-links a:hover {
+    color: #FCA301;
+}
+
+.nav-links a::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 0;
+    height: 2px;
+    background-color: #FCA301;
+    transition: width 0.3s ease;
+}
+
+.nav-links a:hover::after {
+    width: 100%;
+}
+
+/* Main Content */
+main {
+    flex: 1;
+    padding: 2rem;
+    padding-top: 4rem;
+}
+
+/* Footer */
+footer {
+    padding: 1.2rem;
+    background-color: #F5ECE7;
+    text-align: center;
+    font-size: 0.85rem;
+    color: #190400;
+    box-shadow: 0 -1px 3px rgba(0, 0, 0, 0.05);
+}
+
+/* Hero Section */
+.hero {
+    background: linear-gradient(135deg, rgba(252, 163, 1, 0.1) 0%, rgba(252, 163, 1, 0.05) 100%);
+    border-radius: 16px;
+    padding: 3rem 2rem;
+    margin-bottom: 3rem;
+    text-align: center;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.hero-title {
+    font-size: 3rem;
+    font-weight: 800;
+    color: #FCA301;
+    margin-bottom: 1rem;
+    letter-spacing: -0.5px;
+}
+
+.hero-subtitle {
+    font-size: 1.25rem;
+    color: #190400;
+    opacity: 0.9;
+    max-width: 700px;
+    margin: 0 auto 2rem;
+    line-height: 1.6;
+}
+
+/* Buttons */
+.cta-buttons {
+    display: flex;
+    gap: 1rem;
+    justify-content: center;
+    margin-top: 2rem;
+}
+
+.btn-primary {
+    background-color: #FCA301;
+    color: white;
+    padding: 0.8rem 2rem;
+    border-radius: 8px;
+    text-decoration: none;
+    font-weight: 600;
+    transition: all 0.2s ease;
+    border: none;
+    cursor: pointer;
+    display: inline-flex;
+    align-items: center;
+}
+
+.btn-primary:hover {
+    background-color: #e69500;
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(252, 163, 1, 0.2);
+}
+
+.btn-outline {
+    background-color: transparent;
+    color: #FCA301;
+    padding: 0.8rem 2rem;
+    border-radius: 8px;
+    text-decoration: none;
+    font-weight: 600;
+    transition: all 0.2s ease;
+    border: 2px solid #FCA301;
+    display: inline-flex;
+    align-items: center;
+}
+
+.btn-outline:hover {
+    background-color: rgba(252, 163, 1, 0.1);
+    transform: translateY(-2px);
+}
+
+/* Toggle Button Styles in Sidebar */
+#toggle-ingredients-btn {
+    font-size: 1rem;
+    padding: 0.6rem 1rem;
+    cursor: pointer;
+    text-align: left;
+}
+
+
+/* Features Grid */
+.features {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 2rem;
+    margin-top: 4rem;
+    max-width: 1200px;
+    margin: 4rem auto 0;
+    padding: 0 2rem;
+}
+
+.feature-card {
+    background: rgba(245, 236, 231, 0.8);
+    padding: 2rem;
+    border-radius: 12px;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05);
+    transition: transform 0.3s ease;
+    backdrop-filter: blur(5px);
+}
+
+.feature-card:hover {
+    transform: translateY(-5px);
+}
+
+.feature-icon {
+    font-size: 2.5rem;
+    color: #FCA301;
+    margin-bottom: 1rem;
+}
+
+.feature-title {
+    font-size: 1.25rem;
+    font-weight: 700;
+    margin-bottom: 1rem;
+    color: #190400;
+}
+
+.feature-desc {
+    color: #190400;
+    opacity: 0.8;
+    line-height: 1.6;
+}
+
+/* Welcome Message */
+.welcome-message {
+    font-size: 1.1rem;
+    color: #190400;
+    background: rgba(245, 236, 231, 0.9);
+    padding: 1rem 1.5rem;
+    border-radius: 8px;
+    display: inline-block;
+    margin-bottom: 1.5rem;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+    backdrop-filter: blur(5px);
+}
+
+/* Material Icons */
+.material-icons {
+    vertical-align: middle;
+    margin-right: 8px;
+    font-size: 1.2em;
+}
+
+
+.ingredients-panel {
+    position: fixed;
+    top: 80px;
+    /* a bit below your top nav */
+    left: 20px;
+    /* away from left edge of window */
+    width: 280px;
+    height: calc(100vh - 100px);
+    background-color: #fff;
+    border-radius: 12px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    padding: 1rem;
+    display: flex;
+    flex-direction: column;
+    z-index: 500;
+}
+
+/* Panel Header */
+.ingredients-panel h3 {
+    margin: 0 0 0.75rem;
+    font-size: 1.25rem;
+    color: #190400;
+    border-bottom: 2px solid #FCA301;
+    padding-bottom: 0.25rem;
+}
+
+/* Controls Row (show-all + search) */
+.controls-row {
+    display: flex;
+    gap: 0.5rem;
+    margin-bottom: 1rem;
+}
+
+.controls-row .btn-show-all,
+.controls-row .btn-search {
+    flex-shrink: 0;
+    border: none;
+    border-radius: 6px;
+    padding: 0.5rem 0.75rem;
+    font-size: 0.9rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background-color 0.2s ease;
+}
+
+.controls-row .btn-show-all {
+    background-color: #796d4c;
+    color: #fff;
+}
+
+.controls-row .btn-show-all:hover {
+    background-color: #5c523b;
+}
+
+.controls-row input[type="text"] {
+    flex: 1;
+    padding: 0.5rem;
+    border: 1px solid #ccc;
+    border-radius: 6px;
+}
+
+.controls-row .btn-search {
+    background-color: #FCA301;
+    color: #fff;
+}
+
+.controls-row .btn-search:hover {
+    background-color: #e69500;
+}
+
+/* Scrollable list of cards */
+.ingredients-list {
+    flex: 1;
+    overflow-y: auto;
+    padding-right: 0.25rem;
+    /* for hidden scrollbar */
+}
+
+/* Custom hide scrollbar (Webkit) */
+.ingredients-list::-webkit-scrollbar {
+    width: 6px;
+}
+
+.ingredients-list::-webkit-scrollbar-thumb {
+    background-color: rgba(0, 0, 0, 0.2);
+    border-radius: 3px;
+}
+
+.ingredients-list::-webkit-scrollbar-track {
+    background: transparent;
+}
+
+/* Ingredient Card */
+.ingredient-card {
+    background-color: #f5f5f5;
+    border-radius: 8px;
+    padding: 0.75rem;
+    margin-bottom: 0.75rem;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    box-shadow: 0 1px 4px rgba(0, 0, 0, 0.05);
+}
+
+.ingredient-card .name {
+    font-size: 1rem;
+    color: #190400;
+    flex: 1;
+    margin-right: 0.5rem;
+}
+
+.ingredient-card input[type="number"] {
+    width: 50px;
+    padding: 0.3rem;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    margin-right: 0.5rem;
+}
+
+.ingredient-card button {
+    border: none;
+    border-radius: 6px;
+    padding: 0.4rem 0.75rem;
+    font-size: 0.85rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background-color 0.2s ease;
+}
+
+.ingredient-card button.add {
+    background-color: #FCA301;
+    color: #fff;
+}
+
+.ingredient-card button.add:hover {
+    background-color: #e69500;
+}
+
+.ingredient-card button.remove {
+    background-color: #d9534f;
+    color: #fff;
+    margin-left: 0.5rem;
+}
+
+.ingredient-card button.remove:hover {
+    background-color: #c9302c;
+}

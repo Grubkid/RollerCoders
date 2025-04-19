@@ -4,6 +4,9 @@ from flask_uploads import DOCUMENTS, IMAGES, TEXT, UploadSet, configure_uploads
 from flask_cors import CORS
 from werkzeug.utils import secure_filename
 from werkzeug.datastructures import  FileStorage
+from App.views.auth import auth_views
+from App.views.ingredient import ingredient_views
+from flask_jwt_extended import JWTManager, jwt_required, current_user, create_access_token, set_access_cookies, unset_jwt_cookies
 
 
 from App.database import init_db
