@@ -3,6 +3,26 @@
 <h2>Recipes Based on Your Pantry</h2>
 {% if recipes %}
   <ul>
+    <form method="POST">
+        <label>Category:</label>
+        <select name="category">
+          <option value="">All</option>
+          {% for c in categories %}
+            <option value="{{ c }}" {% if c == selected_category %}selected{% endif %}>{{ c }}</option>
+          {% endfor %}
+        </select>
+      
+        <label>Area:</label>
+        <select name="area">
+          <option value="">All</option>
+          {% for a in areas %}
+            <option value="{{ a }}" {% if a == selected_area %}selected{% endif %}>{{ a }}</option>
+          {% endfor %}
+        </select>
+      
+        <button type="submit">🔍 Filter</button>
+      </form>
+      <hr>
     {% for r in recipes %}
       <li>
         <a href="{{ url_for('recipe_views.recipe_detail', id=r.idMeal) }}">

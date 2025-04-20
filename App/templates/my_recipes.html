@@ -1,0 +1,16 @@
+{% extends 'layout.html' %}
+{% block content %}
+<h2>My Saved Recipes</h2>
+<ul>
+  {% for r in recipes %}
+    <li>
+      <a href="{{ url_for('recipe_views.recipe_detail', id=r.api_recipe_id) }}">
+        <img src="{{ r.thumbnail }}" width="80"> {{ r.name }}
+      </a>
+      <form method="POST" action="{{ url_for('recipe_views.remove_recipe', id=r.api_recipe_id) }}" style="display:inline;">
+        <button type="submit">❌ Remove</button>
+      </form>
+    </li>
+  {% endfor %}
+</ul>
+{% endblock %}

@@ -2,6 +2,9 @@
 {% block content %}
 <h2>{{ recipe.strMeal }}</h2>
 <img src="{{ recipe.strMealThumb }}" width="250">
+<form method="POST" action="{{ url_for('recipe_views.save_recipe', id=recipe.idMeal) }}">
+    <button type="submit">💾 Save This Recipe</button>
+  </form>
 <p><strong>Category:</strong> {{ recipe.strCategory }}</p>
 <p><strong>Area:</strong> {{ recipe.strArea }}</p>
 <p><strong>Instructions:</strong> {{ recipe.strInstructions }}</p>

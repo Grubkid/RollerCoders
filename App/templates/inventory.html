@@ -1,20 +1,30 @@
 {% extends 'layout.html' %}
+
 {% block content %}
-<h2>My Inventory</h2>
-<ul>
+<h2 style="text-align: center;">My Inventory</h2>
+
+<div class="inventory-grid">
     {% for ing in ingredients %}
-    <li>
-        {{ ing.name }} - Quantity: {{ ing.quantity }}
-        <form method="POST" action="{{ url_for('ingredient_views.view_inventory') }}">
-            <input type="hidden" name="ingredient_id" value="{{ ing.ingredient_id }}">
-            <input type="number" name="quantity" min="1" value="{{ ing.quantity }}">
-            <button type="submit">Update Quantity</button>
-        </form>
-        <form method="POST" action="{{ url_for('ingredient_views.remove_ingredient_view') }}">
-            <input type="hidden" name="ingredient_id" value="{{ ing.ingredient_id }}">
-            <button type="submit">Remove</button>
-        </form>
-    </li>
+    <div class="ingredient-card">
+        <div class="ingredient-img">
+            <img src="https://www.themealdb.com/images/ingredients/{{ ing.name | urlencode }}-Small.png" alt="{{ ing.name }}">
+        </div>
+        <div class="ingredient-details">
+            <h3>{{ ing.name }}</h3>
+            <p>Quantity: {{ ing.quantity }}</p>
+
+            <form method="POST" action="{{ url_for('ingredient_views.view_inventory') }}" class="inline-form">
+                <input type="hidden" name="ingredient_id" value="{{ ing.ingredient_id }}">
+                <input type="number" name="quantity" min="1" value="{{ ing.quantity }}">
+                <button type="submit">Update</button>
+            </form>
+
+            <form method="POST" action="{{ url_for('ingredient_views.remove_ingredient_view') }}" class="inline-form">
+                <input type="hidden" name="ingredient_id" value="{{ ing.ingredient_id }}">
+                <button type="submit" class="remove-btn">Remove</button>
+            </form>
+        </div>
+    </div>
     {% endfor %}
-</ul>
+</div>
 {% endblock %}
