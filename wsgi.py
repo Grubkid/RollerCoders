@@ -6,6 +6,7 @@ from flask_jwt_extended import JWTManager
 
 from App.views.auth import auth_views
 from App.views.ingredient import ingredient_views
+from App.views.recipe import recipe_views
 from App.database import db, get_migrate
 from App.models import User
 from App.main import create_app
@@ -25,8 +26,8 @@ jwt = JWTManager(app)
 CORS(app)
 
 # Register Blueprints
-app.register_blueprint(ingredient_views)
-
+#app.register_blueprint(ingredient_views)
+#app.register_blueprint(recipe_views)
 
 '''
 Database Init Command
