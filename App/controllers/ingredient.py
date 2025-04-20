@@ -67,4 +67,5 @@ def update_ingredient_quantity(user_id, ingredient_id, quantity):
 def get_user_ingredients(user_id):
     """Retrieve all ingredients in the user's inventory."""
     ingredients = Ingredient.query.filter_by(user_id=user_id).all()
+    print(f"Retrieved ingredients for user_id={user_id}: {ingredients}")
     return [ing.to_dict() for ing in ingredients]
