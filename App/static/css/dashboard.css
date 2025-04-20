@@ -42,6 +42,7 @@
     max-width: 2000px;
     height: 100%;
     overflow-y: auto;
+    overflow-x: hidden;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -138,6 +139,77 @@
     background-color: #eee;
 }
 
+.main-nav {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 1rem 0rem 1rem;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+    z-index: 9999;
+  }
+  
+  .nav-left {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+  }
+  
+  .nav-logo {
+    width: 50px;
+    height: 50px;
+    object-fit: contain;
+    border-radius: 8px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+  }
+  
+  .nav-title {
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: #190400;
+  }
+  
+  .nav-center {
+    display: flex;
+    gap: 2rem;
+    justify-content: center;
+    align-items: center;
+    flex: 1;
+  }
+  
+  .nav-link {
+    font-size: 1rem;
+    font-weight: 500;
+    color: #190400;
+    text-decoration: none;
+    padding: 0.3rem 0.6rem;
+    transition: all 0.3s ease;
+    position: relative;
+    opacity: 0.8;
+  }
+  
+  .nav-link:hover {
+    opacity: 1;
+    color: #FCA301;
+  }
+  
+  .nav-link.active {
+    font-size: 1.3rem;
+    font-weight: 700;
+    color: #FCA301;
+    opacity: 1;
+    transform: scale(1.05);
+  }
+  
+  .nav-right {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+  }
+  
+
+ 
+  
+
 @keyframes fadeIn {
     from {
         opacity: 0;
@@ -202,4 +274,72 @@ body {
     background-color: #f2f2f2;
     /* soft grey to make white panels pop */
     overflow: hidden;
+}
+
+.inventory-grid {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1.5rem;
+    justify-content: flex-start;
+    margin-top: 1rem;
+    padding: 0.5rem;
+    width: 100%;
+}
+
+.inventory-card {
+    width: 180px;
+    background: #ffffff;
+    border-radius: 12px;
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.06);
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    transition: transform 0.2s ease, box-shadow 0.3s ease;
+}
+
+.inventory-card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 12px 28px rgba(0, 0, 0, 0.1);
+}
+
+.ingredient-image {
+    width: 100%;
+    height: 120px;
+    object-fit: contain;
+    background-color: #f9f9f9;
+    padding: 1rem;
+}
+
+.ingredient-meta {
+    padding: 1rem;
+    text-align: center;
+    width: 100%;
+}
+
+.ingredient-meta h4 {
+    margin: 0;
+    font-size: 1rem;
+    color: #190400;
+}
+
+.ingredient-meta p {
+    margin: 0.5rem 0 1rem;
+    font-size: 0.85rem;
+    color: #555;
+}
+
+.btn-remove {
+    background-color: #ff4d4d;
+    color: white;
+    border: none;
+    padding: 0.3rem 0.9rem;
+    font-size: 0.75rem;
+    border-radius: 999px;
+    cursor: pointer;
+    transition: background 0.3s ease;
+}
+
+.btn-remove:hover {
+    background-color: #e53935;
 }

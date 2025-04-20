@@ -57,19 +57,26 @@
     <!-- ✅ Main: Inventory Panel (aligned and scrollable) -->
     <div class="inventory-panel-wrapper">
         <div class="inventory-panel">
-            <h2>My Inventory</h2>
-            <ul>
+            <div class="inventory-grid">
                 {% for ing in user_ingredients %}
-                <li>
-                    {{ ing.name }} — Quantity: {{ ing.quantity }}
-                    <form method="POST" action="{{ url_for('ingredient_views.remove_ingredient_view') }}"
-                        style="display: inline;">
-                        <input type="hidden" name="ingredient_id" value="{{ ing.ingredient_id }}">
-                        <button type="submit" class="btn btn-outline" style="margin-left: 1rem;">Remove</button>
-                    </form>
-                </li>
+                <div class="inventory-card">
+                    <!-- Placeholder image - replace with real image if needed -->
+                    <img src="https://www.themealdb.com/images/ingredients/{{ ing.name | urlencode }}.png"
+                        alt="{{ ing.name }}" class="ingredient-image">
+
+                    <div class="ingredient-meta">
+                        <h4>{{ ing.name }}</h4>
+                        <p>Quantity: {{ ing.quantity }}</p>
+
+                        <form method="POST" action="{{ url_for('ingredient_views.remove_ingredient_view') }}">
+                            <input type="hidden" name="ingredient_id" value="{{ ing.ingredient_id }}">
+                            <button type="submit" class="btn-remove">Remove</button>
+                        </form>
+                    </div>
+                </div>
                 {% endfor %}
-            </ul>
+            </div>
+
         </div>
     </div>
 

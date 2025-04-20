@@ -12,12 +12,26 @@
 </head>
 
 <body>
-    <nav>
-        <div class="nav-links">
-            <a href="dashboard">Home</a>
-            <a href="/logout">Logout</a>
+    <nav class="main-nav">
+
+        <!-- 🔵 LEFT: Logo + Title -->
+        <div class="nav-left">
+            <img src="{{ url_for('static', filename='images/BBC.jpg') }}" alt="BBC Logo" class="nav-logo">
+            <h1>BBC</h1>
         </div>
-        <div class="nav-title">BigBackCooks 🍳</div>
+
+        <!-- 🟡 CENTER: Navigation Links -->
+        <div class="nav-center">
+            <a href="#" class="nav-link {% if active_tab == 'stockpile' %}active{% endif %}">The Stockpile</a>
+            <a href="#" class="nav-link {% if active_tab == 'recipes' %}active{% endif %}">The Heavyweight Recipes</a>
+            <a href="#" class="nav-link {% if active_tab == 'vip' %}active{% endif %}">The VIP</a>
+        </div>
+
+        <!-- 🟣 RIGHT: Logout -->
+        <div class="nav-right">
+            <a href="{{ url_for('auth_views.logout') }}" class="nav-link ">Logout</a>
+        </div>
+
     </nav>
 
     <main>
