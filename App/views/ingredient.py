@@ -24,7 +24,7 @@ def dashboard():
     with open(JSON_PATH, 'r', encoding='utf-8') as f:
         all_ingredients = json.load(f).get('meals', [])
 
-    # Determine whether this is a search (POST) or a “show all” toggle (GET)
+    # Determine if this is a search (POST) or a “show all” toggle (GET)
     if request.method == 'POST':
         query    = request.form.get('query', '').strip().lower()
         show_all = request.form.get('show_all') == '1'
@@ -48,7 +48,6 @@ def dashboard():
 
     return render_template(
         'dashboard.html',
-        # ⚠️ make sure the template still uses `search_results`, not `api_ingredients`
         search_results=search_results,
         user_ingredients=user_ingredients
     )
@@ -69,14 +68,29 @@ def add_ingredient_view():
 @ingredient_views.route('/ingredients/remove', methods=['POST'])
 @jwt_required()
 def remove_ingredient_view():
-    """Remove an ingredient from the user's inventory."""
+    """Decrement an ingredient's quantity, or remove it entirely if it hits zero."""
     user_id       = get_jwt_identity()
     ingredient_id = request.form.get('ingredient_id')
 
-    if remove_ingredient_from_user(user_id, ingredient_id):
-        flash('Ingredient removed successfully.', 'success')
+    # Fetch current inventory for this user
+    user_ings = get_user_ingredients(user_id)
+    # Find the matching ingredient record
+    ing = next((i for i in user_ings if i['ingredient_id'] == ingredient_id), None)
+
+    if not ing:
+        flash('Ingredient not found in your inventory.', 'error')
+        return redirect(url_for('ingredient_views.dashboard'))
+
+    new_qty = ing['quantity'] - 1
+    if new_qty > 0:
+        # Just decrement
+        update_ingredient_quantity(user_id, ingredient_id, new_qty)
+        flash(f"Decreased {ing['name']} to {new_qty}.", 'success')
     else:
-        flash('Ingredient not found.', 'error')
+        # Quantity hit zero: delete record
+        remove_ingredient_from_user(user_id, ingredient_id)
+        flash(f"Removed all of {ing['name']} from your inventory.", 'success')
+
     return redirect(url_for('ingredient_views.dashboard'))
 
 @ingredient_views.route('/inventory', methods=['GET', 'POST'])
