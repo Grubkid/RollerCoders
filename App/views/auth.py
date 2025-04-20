@@ -20,7 +20,7 @@ def login():
         user = User.query.filter_by(username=username).first()
 
         if user and check_password_hash(user.password, password):
-            access_token = create_access_token(identity=user.id)
+            access_token = create_access_token(identity=str(user.id))  # Convert user.id to a string
             resp = redirect(url_for('ingredient_views.dashboard'))  
             set_access_cookies(resp, access_token)
             return resp
