@@ -1,7 +1,7 @@
 {% extends 'dashboard_layout.html' %}
 
 {% block content %}
-<div style="display: flex;">
+<div class="dashboard-container" style="display: flex; align-items: flex-start;">
 
     <!-- ✅ LEFT SIDEBAR: Fixed, scrollable white panel -->
     <aside class="ingredient-sidebar">
@@ -26,15 +26,21 @@
 
         <div class="ingredient-list">
             {% for ing in search_results %}
-            <div class="ingredient-item" onclick="toggleActions(this)">
-                {{ ing.strIngredient }}
+            <div class="ingredient-item {% if ing.idIngredient in user_ingredient_ids %}in-inventory{% endif %}">
+                <!-- Only this clickable -->
+                <div class="ingredient-name" onclick="toggleActions(this)">
+                    {{ ing.strIngredient }}
+                </div>
+
                 <div class="ingredient-actions">
                     <form method="POST" action="{{ url_for('ingredient_views.add_ingredient_view') }}">
                         <input type="hidden" name="ingredient_id" value="{{ ing.idIngredient }}">
                         <input type="hidden" name="name" value="{{ ing.strIngredient }}">
+                        <label style="font-size: 0.75rem; color: #444;">Qty:</label>
                         <input type="number" name="quantity" value="1" min="1">
                         <button type="submit" class="btn btn-primary">Add</button>
                     </form>
+
                     {% if ing.idIngredient in user_ingredient_ids %}
                     <form method="POST" action="{{ url_for('ingredient_views.remove_ingredient_view') }}">
                         <input type="hidden" name="ingredient_id" value="{{ ing.idIngredient }}">
@@ -43,29 +49,48 @@
                     {% endif %}
                 </div>
             </div>
+
             {% endfor %}
         </div>
     </aside>
 
-    <!-- Main: Inventory -->
-    <div style="flex-grow: 1; padding: 1em;">
-        <h2>My Inventory</h2>
-        <ul>
-            {% for ing in user_ingredients %}
-            <li>
-                {{ ing.name }} - Quantity: {{ ing.quantity }}
-                <form method="POST" action="{{ url_for('ingredient_views.remove_ingredient_view') }}">
-                    <input type="hidden" name="ingredient_id" value="{{ ing.ingredient_id }}">
-                    <button type="submit">Remove</button>
-                </form>
-            </li>
-            {% endfor %}
-        </ul>
+    <!-- ✅ Main: Inventory Panel (aligned and scrollable) -->
+    <div class="inventory-panel-wrapper">
+        <div class="inventory-panel">
+            <h2>My Inventory</h2>
+            <ul>
+                {% for ing in user_ingredients %}
+                <li>
+                    {{ ing.name }} — Quantity: {{ ing.quantity }}
+                    <form method="POST" action="{{ url_for('ingredient_views.remove_ingredient_view') }}"
+                        style="display: inline;">
+                        <input type="hidden" name="ingredient_id" value="{{ ing.ingredient_id }}">
+                        <button type="submit" class="btn btn-outline" style="margin-left: 1rem;">Remove</button>
+                    </form>
+                </li>
+                {% endfor %}
+            </ul>
+        </div>
     </div>
+
 </div>
 
 <!-- Toggle Script -->
 <script>
+    function toggleActions(nameEl) {
+        const parentItem = nameEl.closest('.ingredient-item');
+
+        // Collapse all other open items
+        document.querySelectorAll('.ingredient-item').forEach(el => {
+            if (el !== parentItem) {
+                el.classList.remove('open');
+            }
+        });
+
+        // Toggle this one
+        parentItem.classList.toggle('open');
+    }
+
     document.addEventListener("DOMContentLoaded", function () {
         const toggleBtn = document.getElementById("toggle-ingredients-btn");
         const ingredientsSection = document.getElementById("ingredients-section");

@@ -1,112 +1,205 @@
 /* Sidebar ingredient list */
 .ingredient-sidebar {
     width: 300px;
-    height: calc(100vh - 80px);
+    height: 80vh;
     background: white;
-    margin-top: 1rem;
-    margin-left: 1rem;
-    border-radius: 12px;
+    margin-top: 0px;
+    margin-left: 0rem;
+    margin-bottom: 1.5rem;
+    border-radius: 16px;
     padding: 1rem;
-    overflow: hidden;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    overflow-y: auto;
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.08);
+    /* stronger floating feel */
     position: fixed;
     display: flex;
     flex-direction: column;
-  }
-  
-  .ingredient-sidebar h3 {
+}
+
+.inventory-panel-wrapper {
+    height: 80vh;
+    margin-top: 0px;
+    margin-bottom: 1.5rem;
+    margin-left: 320px;
+    margin-bottom: 1.5rem;
+    padding: 0 0 3rem 3rem;
+    border-radius: 16px;
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    overflow: hidden;
+    flex-grow: 1;
+}
+
+
+.inventory-panel {
+    background: white;
+    border-radius: 16px;
+    padding: 1rem;
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.08);
+    /* same floating shadow */
+    width: 100%;
+    max-width: 2000px;
+    height: 100%;
+    overflow-y: auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.ingredient-sidebar h3 {
     margin: 0 auto 1rem auto;
     font-size: 1.3rem;
     color: #190400;
-  }
-  
-  .ingredient-controls {
+}
+
+.ingredient-controls {
     display: flex;
     gap: 0.5rem;
     margin-bottom: 1rem;
-  }
-  
-  .ingredient-controls input[type="text"] {
+}
+
+.ingredient-controls input[type="text"] {
     flex: 1;
     padding: 0.3rem;
     font-size: 0.85rem;
     border: 1px solid #ccc;
     border-radius: 4px;
-  }
-  
-  .ingredient-controls button {
+}
+
+.ingredient-controls button {
     padding: 0.2rem 0.6rem;
     font-size: 0.75rem;
-  }
-  
-  .ingredient-list {
+}
+
+.ingredient-list {
     overflow-y: auto;
     flex: 1;
     padding-right: 6px;
-  }
-  
-  .ingredient-item {
+}
+
+.ingredient-item {
     font-size: 0.95rem;
     color: #190400;
     padding: 0.4rem 0.5rem;
     border-bottom: 1px solid #eee;
     cursor: pointer;
     transition: background 0.2s ease;
-  }
-  
-  .ingredient-item:hover {
+}
+
+.ingredient-item:hover {
     background-color: #f9f9f9;
-  }
-  
-  .ingredient-actions {
+}
+
+.ingredient-actions {
     display: none;
     flex-direction: column;
     gap: 0.4rem;
     padding: 0.4rem 0;
     animation: fadeIn 0.3s ease-in-out;
-  }
-  
-  .ingredient-item.open .ingredient-actions {
+}
+
+.ingredient-item.open .ingredient-actions {
     display: flex;
-  }
-  
-  .ingredient-actions form {
+}
+
+.ingredient-actions form {
     display: flex;
     gap: 0.4rem;
     justify-content: start;
     align-items: center;
-  }
-  
-  .ingredient-actions input[type="number"] {
+}
+
+.ingredient-actions input[type="number"] {
     width: 50px;
     font-size: 0.8rem;
     padding: 0.2rem;
-  }
-  
-  .btn {
+}
+
+.btn {
     border: none;
     border-radius: 4px;
     font-size: 0.75rem;
     cursor: pointer;
-  }
-  
-  .btn-primary {
+}
+
+.btn-primary {
     background-color: #FCA301;
     color: white;
-  }
-  
-  .btn-outline {
+}
+
+.btn-outline {
     background-color: white;
     border: 1px solid #ccc;
     color: #190400;
-  }
-  
-  .btn-outline:hover {
+}
+
+.btn-outline:hover {
     background-color: #eee;
-  }
-  
-  @keyframes fadeIn {
-    from { opacity: 0; transform: scaleY(0.9); }
-    to { opacity: 1; transform: scaleY(1); }
-  }
-  
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: scaleY(0.9);
+    }
+
+    to {
+        opacity: 1;
+        transform: scaleY(1);
+    }
+}
+
+.ingredient-name {
+    font-size: 0.95rem;
+    font-weight: 600;
+    color: #190400;
+    text-align: left;
+    margin-bottom: 0.2rem;
+    cursor: pointer;
+}
+
+.ingredient-actions {
+    display: none;
+    flex-direction: column;
+    gap: 0.4rem;
+    padding-top: 0.3rem;
+    animation: fadeIn 0.3s ease-in-out;
+}
+
+.ingredient-item.open .ingredient-actions {
+    display: flex;
+}
+
+.ingredient-name {
+    cursor: pointer;
+}
+
+.ingredient-name:hover {
+    text-decoration: underline;
+    color: #FCA301;
+}
+
+
+
+
+.inventory-panel h2 {
+    margin-top: 0;
+    text-align: center;
+    color: #190400;
+}
+
+.inventory-panel ul {
+    list-style: none;
+    padding-left: 0;
+}
+
+.inventory-panel li {
+    margin-bottom: 1rem;
+}
+
+body {
+    background-color: #f2f2f2;
+    /* soft grey to make white panels pop */
+    overflow: hidden;
+}
