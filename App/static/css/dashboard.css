@@ -1,33 +1,27 @@
 /* Sidebar ingredient list */
 .ingredient-sidebar {
     width: 300px;
-    height: 80vh;
+    height: calc(100vh - 20px); /* Adjust height to fit within the viewport */
     background: white;
-    margin-top: 0px;
-    margin-left: 0rem;
-    margin-bottom: 1.5rem;
+    margin: 10px 0 10px 0; /* Add some margin for spacing */
     border-radius: 16px;
     padding: 1rem;
     overflow-y: auto;
     box-shadow: 0 8px 24px rgba(0, 0, 0, 0.08);
-    /* stronger floating feel */
     position: fixed;
     display: flex;
     flex-direction: column;
 }
 
 .inventory-panel-wrapper {
-    height: 80vh;
-    margin-top: 0px;
-    margin-bottom: 1.5rem;
-    margin-left: 320px;
-    margin-bottom: 1.5rem;
-    padding: 0 0 3rem 3rem;
+    height: calc(100vh - 20px); /* Adjust height to fit within the viewport */
+    margin: 10px 0 10px 320px; /* Ensure it aligns with the sidebar */
+    padding: 0 1rem;
     border-radius: 16px;
     display: flex;
     justify-content: center;
     align-items: flex-start;
-    overflow: hidden;
+    overflow-y: auto;
     flex-grow: 1;
 }
 
