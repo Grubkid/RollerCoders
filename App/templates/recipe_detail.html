@@ -1,20 +1,40 @@
-{% extends 'layout.html' %}
-{% block content %}
-<h2>{{ recipe.strMeal }}</h2>
-<img src="{{ recipe.strMealThumb }}" width="250">
-<p><strong>Category:</strong> {{ recipe.strCategory }}</p>
-<p><strong>Area:</strong> {{ recipe.strArea }}</p>
-<p><strong>Instructions:</strong> {{ recipe.strInstructions }}</p>
+{% extends 'recipe_details_layout.html' %}
 
-<h3>Ingredients:</h3>
-<ul>
-  {% for ing in ingredients %}
-    <li>
-      {{ ing.measure }} {{ ing.name }}
-      {% if ing.missing %}
-        <strong style="color: red;">(missing)</strong>
-      {% endif %}
-    </li>
-  {% endfor %}
-</ul>
+{% block content %}
+<div class="recipe-details-panel-wrapper">
+  <div class="recipe-details-panel animate-entry">
+    <img src="{{ recipe.strMealThumb }}" alt="{{ recipe.strMeal }}" class="recipe-image-centered" />
+
+    <h2 class="recipe-heading animate-title">{{ recipe.strMeal }}</h2>
+
+    <form method="POST" action="{{ url_for('recipe_views.save_recipe', id=recipe.idMeal) }}">
+      <button type="submit" class="btn-pill-red animate-fade">Save</button>
+    </form>
+
+    <!-- New View Source Button -->
+    <a href="{{ recipe.strSource }}" target="_blank" class="btn-pill-blue animate-fade">View Source</a>
+
+    <div class="meta-summary animate-fade-slow">
+      <p><strong class="label">Category:</strong> <span class="meta-value">{{ recipe.strCategory }}</span></p>
+      <p><strong class="label">Area:</strong> <span class="meta-value">{{ recipe.strArea }}</span></p>
+    </div>
+
+    <div class="instructions-box animate-fade-delay">
+      <h4 style="text-align: center;">📜 <span class="section-title">Instructions</span></h4>
+      <p class="recipe-instructions" style="text-align: left;">{{ recipe.strInstructions }}</p>
+    </div>
+
+    <h4 class="section-title centered-title">🧂 Ingredients</h4>
+    <ul class="ingredient-list-clean centered-ingredients animate-fade-delay">
+      {% for ing in ingredients %}
+      <li>
+        {{ ing.measure }} {{ ing.name }}
+        {% if ing.missing %}
+        <span class="missing"> (Missing)</span>
+        {% endif %}
+      </li>
+      {% endfor %}
+    </ul>
+  </div>
+</div>
 {% endblock %}

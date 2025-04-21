@@ -1,18 +1,75 @@
-{% extends 'layout.html' %}
+{% extends 'search_recipe_layout.html' %}
 {% block content %}
-<h2>Recipes Based on Your Pantry</h2>
-{% if recipes %}
-  <ul>
-    {% for r in recipes %}
-      <li>
-        <a href="{{ url_for('recipe_views.recipe_detail', id=r.idMeal) }}">
-          <img src="{{ r.strMealThumb }}" alt="{{ r.strMeal }}" width="80">
-          {{ r.strMeal }}
-        </a>
-      </li>
-    {% endfor %}
-  </ul>
-{% else %}
-  <p>No recipes found. Try adding more ingredients!</p>
-{% endif %}
+
+<!-- ✅ GLOBAL Loading Overlay (MUST BE OUTSIDE the flex layout) -->
+<div id="loading-overlay" class="loading-overlay">
+  <div class="loading-box">
+    <div class="loader-spinner"></div>
+    <p class="loading-text">Filtering BigBackCooks Recipes...</p>
+  </div>
+</div>
+
+<div class="dashboard-container" style="display: flex; align-items: flex-start;">
+
+  <!-- ✅ LEFT SIDEBAR: Filters -->
+  <aside class="ingredient-sidebar">
+    <h3>Find Recipes</h3>
+
+    <!-- Filter Form -->
+    <form method="POST" class="ingredient-controls" style="margin-bottom: 1rem; flex-direction: column; gap: 0.7rem;">
+      <select name="category" class="filter-dropdown">
+        <option value="">All Categories</option>
+        {% for c in categories %}
+        <option value="{{ c }}" {% if c==selected_category %}selected{% endif %}>{{ c }}</option>
+        {% endfor %}
+      </select>
+
+      <select name="area" class="filter-dropdown">
+        <option value="">All Areas</option>
+        {% for a in areas %}
+        <option value="{{ a }}" {% if a==selected_area %}selected{% endif %}>{{ a }}</option>
+        {% endfor %}
+      </select>
+
+      <button type="submit" class="btn btn-primary">🔍 Filter</button>
+    </form>
+  </aside>
+
+  <!-- ✅ RIGHT PANEL: Recipe Results -->
+  <div class="inventory-panel-wrapper">
+    <div class="inventory-panel">
+      {% if recipes %}
+      <div class="recipes-grid">
+        {% for r in recipes %}
+        <div class="recipe-card">
+          <img src="{{ r.strMealThumb }}" alt="{{ r.strMeal }}" class="recipe-thumbnail">
+          <div class="recipe-meta">
+            <h4>{{ r.strMeal }}</h4>
+            <div class="recipe-actions">
+              <a href="{{ url_for('recipe_views.recipe_detail', id=r.idMeal) }}" class="btn-primary small">View</a>
+            </div>
+          </div>
+        </div>
+        {% endfor %}
+      </div>
+      {% else %}
+      <p style="text-align: center; font-size: 1rem; color: #888;">No recipes found. Try changing your filters!</p>
+      {% endif %}
+    </div>
+  </div>
+</div>
+
+<!-- ✅ Script to Trigger Loader -->
+<script>
+  document.addEventListener('DOMContentLoaded', () => {
+    const filterForm = document.querySelector('form.ingredient-controls');
+    const loader = document.getElementById('loading-overlay');
+
+    if (filterForm && loader) {
+      filterForm.addEventListener('submit', () => {
+        loader.style.display = 'flex';
+      });
+    }
+  });
+</script>
 {% endblock %}

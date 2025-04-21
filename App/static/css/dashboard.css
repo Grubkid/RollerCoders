@@ -31,7 +31,6 @@
     flex-grow: 1;
 }
 
-
 .inventory-panel {
     background: white;
     border-radius: 16px;
@@ -139,76 +138,95 @@
     background-color: #eee;
 }
 
+/* ✅ Navigation Bar Styling */
 .main-nav {
     display: flex;
     align-items: center;
     justify-content: space-between;
-    padding: 0 1rem 0rem 1rem;
+    padding: 0.8rem 2rem;
+    background-color: #f8f8f8;
     box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
-    z-index: 9999;
-  }
-  
-  .nav-left {
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+}
+
+.nav-left {
     display: flex;
     align-items: center;
-    gap: 1rem;
-  }
-  
-  .nav-logo {
-    width: 50px;
+    gap: 0.8rem; /* Adjust spacing between the image and text */
+}
+
+.nav-logo {
+    width: 50px; /* Slightly larger for better visibility */
     height: 50px;
-    object-fit: contain;
-    border-radius: 8px;
-    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
-  }
-  
-  .nav-title {
-    font-size: 1.5rem;
+    object-fit: cover;
+    border-radius: 50%;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+.nav-title {
+    font-size: 1.8rem; /* Slightly larger for emphasis */
     font-weight: 700;
-    color: #190400;
-  }
-  
-  .nav-center {
+    color: #e53935;
+    font-family: 'Inter', sans-serif;
+    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.2);
+    white-space: nowrap; /* Prevents text from wrapping */
+}
+
+.nav-center {
     display: flex;
     gap: 2rem;
     justify-content: center;
-    align-items: center;
     flex: 1;
-  }
-  
-  .nav-link {
-    font-size: 1rem;
-    font-weight: 500;
+}
+
+.nav-linkBBC{
+    font-size: 2rem;
+    font-weight: 600;
     color: #190400;
     text-decoration: none;
-    padding: 0.3rem 0.6rem;
+    padding: 0.5rem 1rem;
+    border-radius: 8px;
     transition: all 0.3s ease;
-    position: relative;
-    opacity: 0.8;
-  }
-  
-  .nav-link:hover {
-    opacity: 1;
-    color: #FCA301;
-  }
-  
-  .nav-link.active {
-    font-size: 1.3rem;
-    font-weight: 700;
-    color: #FCA301;
-    opacity: 1;
-    transform: scale(1.05);
-  }
-  
-  .nav-right {
+}
+
+
+.nav-link {
+    font-size: 1rem;
+    font-weight: 600;
+    color: #190400;
+    text-decoration: none;
+    padding: 0.5rem 1rem;
+    border-radius: 8px;
+    transition: all 0.3s ease;
+}
+
+.nav-link:hover {
+    color: #c0a406;
+    box-shadow: 0 4px 12px rgba(229, 57, 53, 0.2);
+}
+
+.nav-right {
     display: flex;
     align-items: center;
-    gap: 1rem;
-  }
-  
+}
 
- 
-  
+.logout-link {
+    font-size: 1rem;
+    font-weight: 600;
+    color: white;
+    background-color: #e53935;
+    padding: 0.5rem 1rem;
+    border-radius: 8px;
+    text-decoration: none;
+    transition: all 0.3s ease;
+}
+
+.logout-link:hover {
+    background-color: #c62828;
+    box-shadow: 0 4px 10px rgba(198, 40, 40, 0.3);
+}
 
 @keyframes fadeIn {
     from {
@@ -251,9 +269,6 @@
     text-decoration: underline;
     color: #FCA301;
 }
-
-
-
 
 .inventory-panel h2 {
     margin-top: 0;
@@ -342,4 +357,70 @@ body {
 
 .btn-remove:hover {
     background-color: #e53935;
+}
+
+/* 🔄 Fancy Recipe Loader Overlay */
+.recipe-loader-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(255, 255, 255, 0.85);
+    backdrop-filter: blur(4px);
+    z-index: 9999;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    animation: fadeIn 0.4s ease-in-out;
+}
+
+/* 🍩 Spinner */
+.loader-spinner {
+    width: 60px;
+    height: 60px;
+    border: 6px solid #f3f3f3;
+    border-top: 6px solid #FCA301;
+    border-radius: 50%;
+    animation: spin 1s linear infinite;
+    margin-bottom: 1rem;
+}
+
+.recipe-loading-text {
+    font-size: 1.2rem;
+    font-weight: 600;
+    color: #190400;
+    animation: bounceFade 1s ease-in-out infinite;
+}
+
+/* ✨ Animations */
+@keyframes spin {
+    to {
+        transform: rotate(360deg);
+    }
+}
+
+@keyframes bounceFade {
+
+    0%,
+    100% {
+        transform: translateY(0);
+        opacity: 1;
+    }
+
+    50% {
+        transform: translateY(-6px);
+        opacity: 0.8;
+    }
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+    }
+
+    to {
+        opacity: 1;
+    }
 }

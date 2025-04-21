@@ -3,7 +3,10 @@ from App.database import db, get_migrate
 from App.controllers.ingredient import ingredient_views
 from App.views.ingredient import ingredient_views
 from App.views.auth import auth_views
+from App.cache import preload_categories, preload_areas
 
+preload_categories()
+preload_areas()
 def create_app():
     app = Flask(__name__)
     db.init_app(app)

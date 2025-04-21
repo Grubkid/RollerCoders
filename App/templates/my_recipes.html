@@ -1,0 +1,30 @@
+{% extends 'my_recipes_layout.html' %}
+
+{% block content %}
+<div class="recipes-panel-wrapper">
+  <div class="recipes-panel">
+    <h2>My Saved Recipes</h2>
+
+    <div class="recipes-grid">
+      {% for r in recipes %}
+      <div class="recipe-card">
+        <img src="{{ r.thumbnail }}" alt="{{ r.name }}" class="recipe-thumbnail">
+
+        <div class="recipe-meta">
+          <h4>{{ r.name }}</h4>
+
+          <div class="recipe-actions">
+            <a href="{{ url_for('recipe_views.recipe_detail', id=r.api_recipe_id) }}" class="btn-primary small">View</a>
+
+            <form method="POST" action="{{ url_for('recipe_views.remove_recipe', id=r.api_recipe_id) }}">
+              <button type="submit" class="btn-remove">Remove</button>
+            </form>
+          </div>
+        </div>
+      </div>
+      {% endfor %}
+    </div>
+
+  </div>
+</div>
+{% endblock %}

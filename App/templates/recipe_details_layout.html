@@ -6,10 +6,10 @@
     <title>BigBackCooks</title>
     <link rel="stylesheet" href="{{ url_for('static', filename='css/dashboard.css') }}">
     <link rel="stylesheet" href="{{ url_for('static', filename='css/layout.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/recipe_details.css') }}">
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
     {% block styles %}{% endblock %}
 </head>
-
 <body>
     <nav class="main-nav">
         <div class="nav-left">
@@ -30,5 +30,6 @@
         {% block content %}{% endblock %}
     </main>
 </body>
+
 
 </html>

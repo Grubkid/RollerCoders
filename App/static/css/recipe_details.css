@@ -1,0 +1,301 @@
+/* ✅ New Scoped Wrapper */
+.recipe-details-panel-wrapper {
+    margin-top: 0px;
+    margin-bottom: 1.5rem;
+    margin-left: 0rem;
+    margin-bottom: 1.5rem;
+    padding: 0;
+    border-radius: 16px;
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    overflow: hidden;
+    flex-grow: 1;
+    height: 100%;
+
+}
+
+/* ✅ New Main Panel */
+.recipe-details-panel {
+    background: white;
+    border-radius: 16px;
+    padding: 2rem;
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.08);
+    width: 100%;
+    max-width: 1800px;
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    overflow-y: auto;
+    overflow-x: hidden;
+    height: 80vh;
+
+
+}
+
+
+/* ✅ Meal Image */
+.recipe-image-centered {
+    width: 100%;
+    max-width: 360px;
+    border-radius: 20px;
+    object-fit: cover;
+    box-shadow: 0 10px 24px rgba(0, 0, 0, 0.1);
+    margin-bottom: 1.5rem;
+    transition: transform 0.3s ease;
+}
+
+.recipe-image-centered:hover {
+    transform: scale(1.02);
+}
+
+/* ✅ Title */
+.recipe-heading {
+    font-size: 2rem;
+    color: #190400;
+    margin-bottom: 1rem;
+    text-align: center;
+    border-bottom: 2px solid #f0f0f0;
+    padding-bottom: 0.5rem;
+    width: 100%;
+}
+
+/* ✅ Save Button (Red pill) */
+.btn-pill-red {
+    background-color: #e53935;
+    color: white;
+    padding: 0.5rem 1.4rem;
+    font-size: 0.9rem;
+    border: none;
+    border-radius: 999px;
+    font-weight: bold;
+    cursor: pointer;
+    margin: 1rem 0;
+    box-shadow: 0 4px 12px rgba(229, 57, 53, 0.3);
+    transition: all 0.3s ease;
+}
+
+.btn-pill-red:hover {
+    background-color: #c62828;
+    box-shadow: 0 6px 18px rgba(198, 40, 40, 0.35);
+}
+
+/* ✅ View Source Button (Blue pill) */
+.btn-pill-blue {
+    background-color: #1e88e5;
+    color: white;
+    padding: 0.5rem 1.4rem;
+    font-size: 0.9rem;
+    border: none;
+    border-radius: 999px;
+    font-weight: bold;
+    cursor: pointer;
+    margin: 1rem 0;
+    box-shadow: 0 4px 12px rgba(30, 136, 229, 0.3);
+    transition: all 0.3s ease;
+    text-decoration: none;
+    display: inline-block;
+    text-align: center;
+}
+
+.btn-pill-blue:hover {
+    background-color: #1565c0;
+    box-shadow: 0 6px 18px rgba(21, 101, 192, 0.35);
+    transform: scale(1.05);
+}
+
+.btn-pill-blue:active {
+    background-color: #0d47a1;
+    box-shadow: 0 2px 8px rgba(13, 71, 161, 0.4);
+    transform: scale(0.98);
+}
+
+/* ✅ Meta Info */
+.meta-summary {
+    text-align: center;
+    font-size: 0.95rem;
+    color: #444;
+    margin-bottom: 1.5rem;
+}
+
+/* ✅ Instructions */
+.instructions-box {
+    background: #ffffff;
+    padding: 1.5rem;
+    border-radius: 16px;
+    box-shadow: 0 6px 18px rgba(0, 0, 0, 0.05);
+    width: 80%;
+    margin: 2rem auto;
+    text-align: center;
+}
+
+.instructions-box h4 {
+    margin-top: 0;
+    font-size: 1.4rem;
+    color: #190400;
+    font-weight: bold;
+    margin-bottom: 1rem;
+    border-bottom: 2px solid #f0f0f0;
+    padding-bottom: 0.5rem;
+}
+
+.recipe-instructions {
+    font-size: 1rem;
+    color: #333;
+    line-height: 1.8;
+    white-space: pre-line;
+    text-align: justify;
+    margin: 0 auto;
+    max-width: 600px;
+}
+
+/* ✅ Ingredients */
+.ingredient-list-clean {
+    list-style: none;
+    padding-left: 0;
+    margin-top: 1rem;
+    width: 100%;
+    background: #fdfdfd;
+    border-radius: 12px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+    padding: 1rem;
+}
+
+.ingredient-list-clean li {
+    padding: 0.8rem 1rem;
+    border-bottom: 1px solid #eee;
+    font-size: 1rem;
+    color: #333;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.ingredient-list-clean li:last-child {
+    border-bottom: none;
+}
+
+.ingredient-list-clean li::before {
+    content: "•";
+    color: #e53935;
+    font-size: 1.2rem;
+    margin-right: 0.5rem;
+}
+
+.ingredient-list-clean li .missing {
+    color: #e53935;
+    font-weight: bold;
+    font-size: 0.85rem;
+    margin-left: 0.5rem;
+}
+
+.ingredient-list-clean li:not(:has(.missing)) {
+    text-align: center;
+    font-weight: bold;
+    font-size: 1.1rem;
+    color: #190400;
+    background: #fff4e6;
+    border-radius: 8px;
+    padding: 1rem;
+    margin: 0.5rem 0;
+    box-shadow: 0 4px 12px rgba(255, 165, 0, 0.2);
+}
+
+/* ✅ Entry Animation */
+@keyframes fadeSlideUp {
+    from {
+        opacity: 0;
+        transform: translateY(25px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+
+/* 🍽️ Enhancements */
+.label {
+    font-weight: 600;
+    color: #333;
+    font-size: 1rem;
+}
+
+.meta-value {
+    font-size: 1rem;
+    color: #555;
+}
+
+/* 📌 Section Titles */
+.section-title {
+    font-size: 1.2rem;
+    font-weight: 700;
+    color: #190400;
+}
+
+/* ✨ Center Ingredients */
+.centered-ingredients {
+    text-align: justify;
+    margin: 0 auto;
+    max-width: 500px;
+}
+
+.centered-title {
+    text-align: center;
+    font-size: 1.3rem;
+    margin-top: 2rem;
+    margin-bottom: 0.5rem;
+    color: #190400;
+}
+
+/* 🎬 Animations */
+.animate-entry {
+    animation: fadeSlideUp 0.8s ease-out both;
+}
+
+.animate-title {
+    animation: fadeIn 0.6s ease-out both;
+}
+
+.animate-fade {
+    animation: fadeIn 0.9s ease-in both;
+}
+
+.animate-fade-slow {
+    animation: fadeIn 1.2s ease-in both;
+}
+
+.animate-fade-delay {
+    animation: fadeIn 1.5s ease-in both;
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(10px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* ✅ Animation for Fade-In */
+@keyframes fadeInButton {
+    from {
+        opacity: 0;
+        transform: translateY(10px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.btn-pill-blue.animate-fade {
+    animation: fadeInButton 0.9s ease-in both;
+}
