@@ -1,4 +1,5 @@
 import os
+from datetime import timedelta  # Import timedelta
 
 def load_config(app, overrides):
     # Load environment-specific configuration
@@ -18,7 +19,9 @@ def load_config(app, overrides):
         # For production, ensure these values are set via environment variables
         app.config['SQLALCHEMY_DATABASE_URI'] = os.environ.get('SQLALCHEMY_DATABASE_URI')
         app.config['SECRET_KEY'] = os.environ.get('SECRET_KEY')
-        app.config['JWT_ACCESS_TOKEN_EXPIRES'] = int(os.environ.get('JWT_ACCESS_TOKEN_EXPIRES', 7))
+        app.config['JWT_ACCESS_TOKEN_EXPIRES'] = timedelta(
+            days=int(os.environ.get('JWT_ACCESS_TOKEN_EXPIRES', 7))  # Convert to timedelta
+        )
 
     # Additional Flask configurations
     app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
