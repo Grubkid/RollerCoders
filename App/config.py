@@ -1,4 +1,5 @@
 import os
+from .default_config import SQLALCHEMY_DATABASE_URI, SECRET_KEY, JWT_ACCESS_TOKEN_EXPIRES
 
 def load_config(app, overrides):
     if os.path.exists(os.path.join('./App', 'custom_config.py')):
