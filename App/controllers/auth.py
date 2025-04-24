@@ -4,10 +4,10 @@ from App.models import User
 from App.database import db
 
 def login(username, password):
-  user = User.query.filter_by(username=username).first()
-  if user and user.check_password(password):
-    return create_access_token(identity=username)
-  return None
+    user = User.query.filter_by(username=username).first()
+    if user and user.check_password(password):
+        return create_access_token(identity=str(user.id))  # Ensure identity is a string
+    return None
 
 def create_user(username, password):
     if User.query.filter_by(username=username).first():
@@ -23,10 +23,7 @@ def setup_jwt(app):
   # configure's flask jwt to resolve get_current_identity() to the corresponding user's ID
   @jwt.user_identity_loader
   def user_identity_lookup(identity):
-    user = User.query.filter_by(username=identity).one_or_none()
-    if user:
-        return user.id
-    return None
+    return str(identity)  # Ensure identity is always a string
 
   @jwt.user_lookup_loader
   def user_lookup_callback(_jwt_header, jwt_data):
@@ -42,7 +39,7 @@ def add_auth_context(app):
   def inject_user():
       try:
           verify_jwt_in_request()
-          user_id = get_jwt_identity()
+          user_id = str(get_jwt_identity())
           current_user = User.query.get(user_id)
           is_authenticated = True
       except Exception as e:
